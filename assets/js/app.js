@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import me from 'magiceye'
-import dm from 'TextDepthMapper'
+import dm from 'assets/js/TextDepthMapper'
+import Marionette from 'backbone.marionette'
 
 function renderMagicEye() {
   me.render({
@@ -26,5 +27,20 @@ function generatePalette(numColors) {
 }
 
 $(function(){
+  var App = new Marionette.Application();
+  App.onStart = function(){
+    console.log('foo');
+    var image = App.Image({});
+    var imageview = App.ImageView({
+      model: image
+    });
+  };
+  App.addRegions({
+    mainRegion: '#main-region'
+  });
+  App.Image = Backbone.Model.extend({
+  });
+  App.start();
+  console.log('bar');
   renderMagicEye();
 });
