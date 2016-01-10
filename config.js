@@ -16,6 +16,7 @@ System.config({
   map: {
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
+    "backbone.marionette": "npm:backbone.marionette@2.4.4",
     "core-js": "npm:core-js@1.2.6",
     "jquery": "npm:jquery@2.2.0",
     "magiceye": "github:peeinears/MagicEye.js@master",
@@ -36,6 +37,27 @@ System.config({
     },
     "npm:babel-runtime@5.8.34": {
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:backbone.babysitter@0.1.10": {
+      "backbone": "npm:backbone@1.2.3",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "underscore": "npm:underscore@1.8.3"
+    },
+    "npm:backbone.marionette@2.4.4": {
+      "backbone": "npm:backbone@1.2.3",
+      "backbone.babysitter": "npm:backbone.babysitter@0.1.10",
+      "backbone.wreqr": "npm:backbone.wreqr@1.3.5",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "underscore": "npm:underscore@1.8.3"
+    },
+    "npm:backbone.wreqr@1.3.5": {
+      "backbone": "npm:backbone@1.2.3",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "underscore": "npm:underscore@1.8.3"
+    },
+    "npm:backbone@1.2.3": {
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "underscore": "npm:underscore@1.8.3"
     },
     "npm:core-js@1.2.6": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",

@@ -1,6 +1,7 @@
 {
   "jspm": {
     "dependencies": {
+      "backbone.marionette": "npm:backbone.marionette@^2.4.4",
       "jquery": "npm:jquery@^2.2.0",
       "magiceye": "github:peeinears/MagicEye.js@master"
     },
