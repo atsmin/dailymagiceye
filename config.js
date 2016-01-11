@@ -16,6 +16,7 @@ System.config({
   map: {
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
+    "backbone": "npm:backbone@1.2.3",
     "backbone.marionette": "npm:backbone.marionette@2.4.4",
     "core-js": "npm:core-js@1.2.6",
     "jquery": "npm:jquery@2.2.0",

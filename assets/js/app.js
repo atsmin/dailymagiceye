@@ -1,12 +1,13 @@
 import $ from 'jquery';
 import me from 'magiceye'
 import dm from 'assets/js/TextDepthMapper'
+import Backbone from 'backbone'
 import Marionette from 'backbone.marionette'
 
 function renderMagicEye() {
   me.render({
     el: 'magic-eye',
-    colors: generatePalette(10),
+    colors: generatePalette(3),
     depthMapper: new me.TextDepthMapper("OK!")
   });
 }
@@ -28,19 +29,27 @@ function generatePalette(numColors) {
 
 $(function(){
   var App = new Marionette.Application();
-  App.onStart = function(){
-    console.log('foo');
-    var image = App.Image({});
-    var imageview = App.ImageView({
-      model: image
-    });
-  };
   App.addRegions({
     mainRegion: '#main-region'
   });
-  App.Image = Backbone.Model.extend({
+  App.Image = Backbone.Model.extend({});
+  App.ImageView = Marionette.ItemView.extend({
+    template: '#image-template'
   });
+
+  App.onStart = function(){
+    console.log('foo');
+    var image = new App.Image({
+      width: 800,
+      height: 600
+    });
+    var imageview = new App.ImageView({
+      el: '#image',
+      model: image
+    });
+    console.log(imageview.render());
+    console.log('bar');
+  };
   App.start();
-  console.log('bar');
   renderMagicEye();
 });
