@@ -1,8 +1,11 @@
 import $ from 'jquery';
-import magiceye from 'magiceye'
-import textmapper from 'assets/js/TextDepthMapper'
+import _ from 'lodash';
+import bootstrap from 'bootstrap';
 import Backbone from 'backbone'
 import Marionette from 'backbone.marionette'
+
+import magiceye from 'magiceye'
+import textmapper from 'assets/js/TextDepthMapper'
 
 function renderMagicEye(words) {
   magiceye.render({
