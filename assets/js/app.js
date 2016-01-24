@@ -1,14 +1,14 @@
 import $ from 'jquery';
-import me from 'magiceye'
-import dm from 'assets/js/TextDepthMapper'
+import magiceye from 'magiceye'
+import textmapper from 'assets/js/TextDepthMapper'
 import Backbone from 'backbone'
 import Marionette from 'backbone.marionette'
 
-function renderMagicEye() {
-  me.render({
+function renderMagicEye(words) {
+  magiceye.render({
     el: 'magic-eye',
-    colors: generatePalette(3),
-    depthMapper: new me.TextDepthMapper("OK!")
+    colors: generatePalette(10),
+    depthMapper: new magiceye.TextDepthMapper(words)
   });
 }
 
@@ -32,24 +32,41 @@ $(function(){
   App.addRegions({
     mainRegion: '#main-region'
   });
+
+  // models
   App.Image = Backbone.Model.extend({});
+  App.Text = Backbone.Model.extend({});
+
+  // views
   App.ImageView = Marionette.ItemView.extend({
     template: '#image-template'
   });
+  App.TextView = Marionette.ItemView.extend({
+    template: '#text-template'
+  });
 
+  // start app
   App.onStart = function(){
-    console.log('foo');
+    var words = "OK!";
     var image = new App.Image({
       width: 800,
       height: 600
     });
+    var text = new App.Text({
+      words: words
+    });
+
     var imageview = new App.ImageView({
       el: '#image',
       model: image
     });
-    console.log(imageview.render());
-    console.log('bar');
+    var textview = new App.TextView({
+      el: '#text',
+      model: text
+    });
+    imageview.render();
+    textview.render();
+    renderMagicEye(words);
   };
   App.start();
-  renderMagicEye();
 });

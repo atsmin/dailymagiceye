@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
     <script>
-     System.import('./assets/js/app');
+     System.import('./assets/js/app')
+     .catch(console.error.bind(console));
     </script>
     <script type="text/template" id="image-template">
-      <img id="magic-eye" width="<%= width %>" height="<%= height %>" src />
+      <div>
+        <img id="magic-eye" width="<%= width %>" height="<%= height %>" src />
+      </div>
+    </script>
+    <script type="text/template" id="text-template">
+      <div>
+        <p><%= words %></p>
+      </div>
     </script>
   </head>
   <body>
-    <section id="image" ></section>
+    <section id="image" class=box></section>
+    <section id="text" class=box></section>
   </body>
 </html>
