@@ -7,14 +7,6 @@ import Marionette from 'backbone.marionette'
 import magiceye from 'magiceye'
 import textmapper from 'assets/js/TextDepthMapper'
 
-function renderMagicEye(words) {
-  magiceye.render({
-    el: 'magic-eye',
-    colors: generatePalette(10),
-    depthMapper: new magiceye.TextDepthMapper(words)
-  });
-}
-
 function randomRGBa() {
   return [Math.floor(Math.random() * 256),
           Math.floor(Math.random() * 256),
@@ -42,7 +34,18 @@ $(function(){
 
   // views
   App.ImageView = Marionette.ItemView.extend({
-    template: '#image-template'
+    template: '#image-template',
+    renderImage: function(words){
+      this.render();
+      this.renderMagicEye(words);
+    },
+    renderMagicEye: function(words) {
+      magiceye.render({
+        el: 'magic-eye',
+        colors: generatePalette(10),
+        depthMapper: new magiceye.TextDepthMapper(words)
+      });
+    }
   });
   App.TextView = Marionette.ItemView.extend({
     template: '#text-template'
@@ -67,9 +70,8 @@ $(function(){
       el: '#text',
       model: text
     });
-    imageview.render();
+    imageview.renderImage(words);
     textview.render();
-    renderMagicEye(words);
   };
   App.start();
 });
