@@ -25,7 +25,8 @@ function generatePalette(numColors) {
 $(function(){
   var App = new Marionette.Application();
   App.addRegions({
-    mainRegion: '#main-region'
+    main: '#main-region',
+    sub: '#sub-region'
   });
 
   // models
@@ -35,15 +36,14 @@ $(function(){
   // views
   App.ImageView = Marionette.ItemView.extend({
     template: '#image-template',
-    renderImage: function(words){
-      this.render();
-      this.renderMagicEye(words);
+    onShow: function(){
+      this.renderMagicEye(this.model.attributes.word);
     },
-    renderMagicEye: function(words) {
+    renderMagicEye: function(word) {
       magiceye.render({
         el: 'magic-eye',
         colors: generatePalette(10),
-        depthMapper: new magiceye.TextDepthMapper(words)
+        depthMapper: new magiceye.TextDepthMapper(word)
       });
     }
   });
@@ -53,25 +53,26 @@ $(function(){
 
   // start app
   App.onStart = function(){
-    var words = "OK!";
+    var word = "OK!";
     var image = new App.Image({
+      word: word,
       width: 800,
       height: 600
     });
     var text = new App.Text({
-      words: words
+      word: word
     });
 
     var imageview = new App.ImageView({
-      el: '#image',
       model: image
     });
     var textview = new App.TextView({
-      el: '#text',
       model: text
     });
-    imageview.renderImage(words);
-    textview.render();
+
+    // render views
+    App.main.show(imageview);
+    App.sub.show(textview);
   };
   App.start();
 });
