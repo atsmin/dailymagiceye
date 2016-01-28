@@ -36,9 +36,9 @@ $(function(){
   // views
   App.ImageView = Marionette.ItemView.extend({
     template: '#image-template',
-    // onShow: function(){
-    //   this.renderMagicEye(this.model.attributes.word);
-    // },
+    onShow: function(){
+      this.renderMagicEye(this.model.attributes.word);
+    },
     renderMagicEye: function(word) {
       magiceye.render({
         el: 'magic-eye',
@@ -57,7 +57,7 @@ $(function(){
   });
 // start app
   App.onStart = function(){
-    var word = "A";
+    var word = "Hello World";
     var image = new App.Image({
       word: word,
       width: 800,
