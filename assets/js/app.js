@@ -53,7 +53,7 @@ $(function(){
   App.ListView = Marionette.CompositeView.extend({
     template: '#list-template',
     childView: App.TextView,
-    itemViewContainer: '#textList'
+    childViewContainer: '#textList'
   });
 // start app
   App.onStart = function(){
