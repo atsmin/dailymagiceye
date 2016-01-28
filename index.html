@@ -10,12 +10,18 @@
       .catch(console.error.bind(console));
     </script>
     <script type="text/template" id="image-template">
-        <img id="magic-eye" width="<%= width %>" height="<%= height %>" class="img-rounded" src />
+      <img id="magic-eye" width="<%= width %>" height="<%= height %>" class="img-rounded" src />
+    </script>
+    <script type="text/template" id="list-template">
+      <h1>MagicEye <em><small>-visual recovery-</small></em></h1>
+      <h3>Answer <small>magic text</small></h3>
+      <div id='textList'></div>
     </script>
     <script type="text/template" id="text-template">
-        <h1>MagicEye <em><small>-visual recovery-</small></em></h1>
-        <h3>Answer <small>magic text</small></h3>
-        <h2 class="bg-primary text-center"><%= word %></h2>
+      <h3 class="bg-primary text-center">
+        <input type="radio" name="choice" class="text_radio"/>
+        <%= text %>
+      </h3>
     </script>
   </head>
   <body>

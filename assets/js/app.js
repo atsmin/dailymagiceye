@@ -31,14 +31,14 @@ $(function(){
 
   // models
   App.Image = Backbone.Model.extend({});
-  App.Text = Backbone.Model.extend({});
+  App.Texts = Backbone.Collection.extend({});
 
   // views
   App.ImageView = Marionette.ItemView.extend({
     template: '#image-template',
-    onShow: function(){
-      this.renderMagicEye(this.model.attributes.word);
-    },
+    // onShow: function(){
+    //   this.renderMagicEye(this.model.attributes.word);
+    // },
     renderMagicEye: function(word) {
       magiceye.render({
         el: 'magic-eye',
@@ -50,29 +50,37 @@ $(function(){
   App.TextView = Marionette.ItemView.extend({
     template: '#text-template'
   });
-
-  // start app
+  App.ListView = Marionette.CompositeView.extend({
+    template: '#list-template',
+    childView: App.TextView,
+    itemViewContainer: '#textList'
+  });
+// start app
   App.onStart = function(){
-    var word = "OK!";
+    var word = "A";
     var image = new App.Image({
       word: word,
       width: 800,
       height: 600
     });
-    var text = new App.Text({
-      word: word
-    });
+    var texts = new App.Texts([
+      {text: 'foo'},
+      {text: 'bar'},
+      {text: 'baz'},
+      {text: 'ham'},
+      {text: 'sam'}
+    ]);
 
     var imageview = new App.ImageView({
       model: image
     });
-    var textview = new App.TextView({
-      model: text
+    var listview = new App.ListView({
+      collection: texts
     });
 
     // render views
     App.main.show(imageview);
-    App.sub.show(textview);
+    App.sub.show(listview);
   };
   App.start();
 });
