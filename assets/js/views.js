@@ -19,27 +19,44 @@ function generatePalette(numColors) {
   return palette;
 }
 
-// views
-export var ImageView = Marionette.ItemView.extend({
-  template: '#image-template',
-  onShow: function(){
-    this.renderMagicEye(this.model.attributes.word);
-  },
-  renderMagicEye: function(word) {
+function renderMagicEye(word) {
     magiceye.render({
       el: 'magic-eye',
       colors: generatePalette(10),
       depthMapper: new magiceye.TextDepthMapper(word)
     });
   }
+
+// views
+export var ImageView = Marionette.ItemView.extend({
+  template: '#image-template',
 });
 
 var TextView = Marionette.ItemView.extend({
-  template: '#text-template'
+  template: '#text-template',
+  ui: {
+    radio: 'input[name=textRadio]',
+  },
+  events: {
+    'click @ui.radio': 'clickRadio'
+  },
+  clickRadio: function(){
+    renderMagicEye(this.ui.radio.val());
+  },
+  templateHelpers: function(options) {
+    return {
+      index: this.options.childIndex
+    };
+  }
 });
 
 export var ListView = Marionette.CompositeView.extend({
   template: '#list-template',
   childView: TextView,
-  childViewContainer: '#textList'
+  childViewContainer: '#textList',
+  childViewOptions: function(model, index) {
+    return {
+      childIndex: index
+    };
+  }
 });

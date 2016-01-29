@@ -18,9 +18,9 @@
       <div id='textList'></div>
     </script>
     <script type="text/template" id="text-template">
-      <div class="text_container bg-primary">
+      <div class="radio bg-primary text_container ">
         <label>
-          <input type="radio" name="choice"/>
+          <input type="radio" name="textRadio" id="text<%= index %>" value="<%= text %>" <%= checked %>/>
           <%= text %>
         </label>
       </div>
