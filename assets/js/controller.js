@@ -23,7 +23,7 @@ export function init(app) {
     collection: texts
   });
 
-  //render views
+  // render views
   app.main.show(imageview);
   app.sub.show(listview);
 }

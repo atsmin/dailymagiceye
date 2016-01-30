@@ -33,6 +33,8 @@ export var ImageView = Marionette.ItemView.extend({
 });
 
 var TextView = Marionette.ItemView.extend({
+  tagName: 'div',
+  className: 'radio bg-primary text_container',
   template: '#text-template',
   ui: {
     radio: 'input[name=textRadio]',
