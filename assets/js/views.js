@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import Backbone from 'backbone'
 import Marionette from 'backbone.marionette'
 
@@ -60,5 +59,10 @@ export var ListView = Marionette.CompositeView.extend({
     return {
       childIndex: index
     };
+  },
+  onRender: function(){
+    renderMagicEye(
+      this.collection.toJSON()[0].text
+    );
   }
 });
