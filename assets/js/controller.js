@@ -3,7 +3,6 @@ import * as views from 'assets/js/views'
 
 export function init(app) {
   var image = new models.Image({
-    word: word,
     width: 800,
     height: 600
   });
