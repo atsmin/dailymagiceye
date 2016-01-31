@@ -2,7 +2,6 @@ import * as models from 'assets/js/models'
 import * as views from 'assets/js/views'
 
 export function init(app) {
-  var word = "Hello World";
   var image = new models.Image({
     word: word,
     width: 800,
