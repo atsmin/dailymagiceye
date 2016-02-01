@@ -1,7 +1,7 @@
-import randomWord from 'random-word-by-length'
+import randomWord from 'random-word-by-length';
 
-import * as models from 'assets/js/models'
-import * as views from 'assets/js/views'
+import * as models from 'assets/js/models';
+import * as views from 'assets/js/views';
 
 export function init(app) {
   var image = new models.Image({

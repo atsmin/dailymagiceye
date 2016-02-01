@@ -1,6 +1,6 @@
-import Marionette from 'backbone.marionette'
+import Marionette from 'backbone.marionette';
 
-import magiceye from 'magiceye'
+import magiceye from 'magiceye';
 
 function randomRGBa() {
   return [Math.floor(Math.random() * 256),
