@@ -3,4 +3,8 @@ import Backbone from 'backbone';
 // models
 export var Image = Backbone.Model.extend({});
 
-export var Texts = Backbone.Collection.extend({});
+var Text = Backbone.Model.extend({});
+
+export var TextList = Backbone.Collection.extend({
+  model: Text
+});

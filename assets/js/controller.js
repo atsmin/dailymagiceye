@@ -9,7 +9,7 @@ export function init(app) {
     height: 600
   });
 
-  var texts = new models.Texts([
+  var textList = new models.TextList([
     {text: randomWord(5)},
     {text: randomWord(5)},
     {text: randomWord(5)},
@@ -21,7 +21,7 @@ export function init(app) {
     model: image
   });
   var listview = new views.ListView({
-    collection: texts
+    collection: textList
   });
 
   // render views
