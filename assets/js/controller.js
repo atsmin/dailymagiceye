@@ -1,3 +1,5 @@
+import randomWord from 'random-word-by-length'
+
 import * as models from 'assets/js/models'
 import * as views from 'assets/js/views'
 
@@ -6,12 +8,13 @@ export function init(app) {
     width: 800,
     height: 600
   });
+
   var texts = new models.Texts([
-    {text: 'foo'},
-    {text: 'bar'},
-    {text: 'baz'},
-    {text: 'ham'},
-    {text: 'sam'}
+    {text: randomWord(5)},
+    {text: randomWord(5)},
+    {text: randomWord(5)},
+    {text: randomWord(5)},
+    {text: randomWord(5)}
   ]);
 
   var imageview = new views.ImageView({
