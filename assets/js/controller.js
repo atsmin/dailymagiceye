@@ -10,7 +10,7 @@ export function init(app) {
   });
 
   var textList = new models.TextList([
-    {text: randomWord(5)},
+    {text: randomWord(5), checked: "checked"},
     {text: randomWord(5)},
     {text: randomWord(5)},
     {text: randomWord(5)},

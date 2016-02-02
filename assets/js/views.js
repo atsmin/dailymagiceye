@@ -1,6 +1,7 @@
 import Marionette from 'backbone.marionette';
 
 import magiceye from 'magiceye';
+import randomWord from 'random-word-by-length';
 
 function randomRGBa() {
   return [Math.floor(Math.random() * 256),
@@ -60,6 +61,25 @@ export var ListView = Marionette.CompositeView.extend({
     };
   },
   onRender: function(){
+    renderMagicEye(
+      this.collection.toJSON()[0].text
+    );
+  },
+  ui: {
+    button: 'button[name=refresh]',
+  },
+  events: {
+    'click @ui.button': 'refreshText'
+  },
+  refreshText: function(){
+    console.log('foo');
+    this.collection.set([
+      {text: randomWord(5), checked: "checked"},
+      {text: randomWord(5)},
+      {text: randomWord(5)},
+      {text: randomWord(5)},
+      {text: randomWord(5)}
+    ]);
     renderMagicEye(
       this.collection.toJSON()[0].text
     );
