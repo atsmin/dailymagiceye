@@ -13,6 +13,7 @@ $(function(){
 // start app
   App.onStart = function(){
     controller.init(App);
+    $('input[name=textRadio]:first').focus();
   };
   App.start();
 });

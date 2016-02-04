@@ -72,7 +72,6 @@ export var ListView = Marionette.CompositeView.extend({
     'click @ui.button': 'refreshText'
   },
   refreshText: function(){
-    console.log('foo');
     this.collection.set([
       {text: randomWord(5), checked: "checked"},
       {text: randomWord(5)},
@@ -83,5 +82,6 @@ export var ListView = Marionette.CompositeView.extend({
     renderMagicEye(
       this.collection.toJSON()[0].text
     );
+    $('input[name=textRadio]:first').focus();
   }
 });
