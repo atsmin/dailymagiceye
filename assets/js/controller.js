@@ -3,7 +3,7 @@ import randomWord from 'random-word-by-length';
 import * as models from 'assets/js/models';
 import * as views from 'assets/js/views';
 
-export function init(app) {
+export function init() {
   var image = new models.Image({
     width: 800,
     height: 600
@@ -23,8 +23,13 @@ export function init(app) {
   var listview = new views.ListView({
     collection: textList
   });
+  var sideview = new views.SideView();
 
   // render views
-  app.main.show(imageview);
-  app.sub.show(listview);
+  imageview.render();
+  sideview.render();
+  sideview.showChildView('nav', new views.NavView());
+  sideview.showChildView('list', listview);
+
+  $('input[name=textRadio]:first').focus();
 }

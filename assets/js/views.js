@@ -28,7 +28,12 @@ function renderMagicEye(word) {
 
 // views
 export var ImageView = Marionette.ItemView.extend({
+  el: '#image',
   template: '#image-template',
+});
+
+export var NavView = Marionette.ItemView.extend({
+  template: '#nav-template',
 });
 
 var TextView = Marionette.ItemView.extend({
@@ -83,5 +88,14 @@ export var ListView = Marionette.CompositeView.extend({
       this.collection.toJSON()[0].text
     );
     $('input[name=textRadio]:first').focus();
+  }
+});
+
+export var SideView = Marionette.LayoutView.extend({
+  el: '#side',
+  template: '#side-template',
+  regions: {
+    nav: '#nav',
+    list: '#list',
   }
 });

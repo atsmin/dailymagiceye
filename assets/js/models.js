@@ -1,7 +1,7 @@
 import Backbone from 'backbone';
 
 // models
-export var Image = Backbone.Model.extend({});
+export var Image = Backbone.Model.extend();
 
 var Text = Backbone.Model.extend({
   defaults: {checked: "" }
