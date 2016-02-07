@@ -8,13 +8,13 @@ export function init() {
     height: settings.IMAGE_HEIGHT
   });
 
-  var textList = new models.TextList();
+  var wordList = new models.WordList();
 
   var imageview = new views.ImageView({
     model: image
   });
   var listview = new views.ListView({
-    collection: textList
+    collection: wordList
   });
   var sideview = new views.SideView();
 
