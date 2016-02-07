@@ -1,6 +1,6 @@
 // image size
-export var image_width = 800;
-export var image_height = 600;
+export const IMAGE_WIDTH = 800;
+export const IMAGE_HEIGHT = 600;
 
 // number of magic texts
-export var num_of_texts = 5;
+export var NUM_OF_TEXTS = 5;

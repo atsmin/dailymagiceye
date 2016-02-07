@@ -4,8 +4,8 @@ import * as settings from 'assets/js/settings';
 
 export function init() {
   var image = new models.Image({
-    width: settings.image_width,
-    height: settings.image_height
+    width: settings.IMAGE_WIDTH,
+    height: settings.IMAGE_HEIGHT
   });
 
   var textList = new models.TextList();

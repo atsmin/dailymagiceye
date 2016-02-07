@@ -19,7 +19,7 @@ export var TextList = Backbone.Collection.extend({
   },
   refresh: function(){
     var texts = [];
-    for (let i of Array(settings.num_of_texts).keys()) {
+    for (let i of Array(settings.NUM_OF_TEXTS).keys()) {
       texts.push({text: randomWord(5)});
     }
     texts[0].checked = "checked";
