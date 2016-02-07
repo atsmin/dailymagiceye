@@ -35,14 +35,12 @@ export var TextList = Backbone.Collection.extend({
   },
   randomKanji: function(args){
     /* unicode Kanji range
-     * 4E00 ~ 9FFF */
-    var first = '456789';
-    var second = 'EF';
-    var third = '0123456789ABCDEF';
+     * 4E00 ~ 9FC3 */
+    var _choose = function(range){ return range[Math.floor(Math.random()*range.length)]; };
+    var first, second, third, last;
+    [first, second, third, last] = ['456789', 'EF', '0123456789ABC', '0123'];
     return unescape(
-      '%u' + first[Math.floor(Math.random()*first.length)] +
-       second[Math.floor(Math.random()*second.length)] +
-       Array(3).join(third[Math.floor(Math.random()*third.length)])
+      '%u' + _choose(first) + _choose(second) +_choose(third) +_choose(last)
     );
   }
 });
