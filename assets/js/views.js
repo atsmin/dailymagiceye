@@ -80,7 +80,8 @@ export var SideView = Marionette.CompositeView.extend({
     'click @ui.button': 'refreshText',
     'click @ui.tab': 'clickTab'
   },
-  refreshText: function(mode){
+  refreshText: function(){
+    var mode = $('li.active').index();
     this.collection.refresh(mode);
     this.renderImage();
   },
@@ -89,6 +90,6 @@ export var SideView = Marionette.CompositeView.extend({
     var index = $(event.target).parent('li').index();
     this.ui.tab.removeClass('active');
     $(this.ui.tab[index]).addClass('active');
-    this.refreshText(index);
+    this.refreshText();
   },
 });
