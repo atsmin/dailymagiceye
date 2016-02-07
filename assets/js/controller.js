@@ -16,13 +16,10 @@ export function init() {
   var listview = new views.ListView({
     collection: wordList
   });
-  var sideview = new views.SideView();
 
   // render views
   imageview.render();
-  sideview.render();
-  sideview.showChildView('nav', new views.NavView());
-  sideview.showChildView('list', listview);
+  listview.render();
 
   $('input[name=textRadio]:first').focus();
 }

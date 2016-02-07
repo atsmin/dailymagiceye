@@ -41,6 +41,8 @@ export var KanjiList = Backbone.Collection.extend({
     this.set(texts);
   },
   randomKanji: function(){
+    /* unicode Kanji range
+     * 4E00 ~ 9FFF */
     var first = '456789';
     var second = 'EF';
     var third = '0123456789ABCDEF';

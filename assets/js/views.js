@@ -3,6 +3,8 @@ import magiceye from 'magiceye';
 import textMapper from 'magiceye/depthmappers/TextDepthMapper.js';
 import randomWord from 'random-word-by-length';
 
+import * as models from 'assets/js/models';
+
 function randomRGBa() {
   return [Math.floor(Math.random() * 256),
           Math.floor(Math.random() * 256),
@@ -32,21 +34,6 @@ export var ImageView = Marionette.ItemView.extend({
   template: '#image-template',
 });
 
-export var NavView = Marionette.ItemView.extend({
-  template: '#nav-template',
-  ui: {
-    tab: 'li[name=textTab]',
-  },
-  events: {
-    'click @ui.tab': 'clickTab'
-  },
-  clickTab: function(event){
-    var index = $(event.target).parent('li').index();
-    this.ui.tab.removeClass('active');
-    $(this.ui.tab[index]).addClass('active');
-  },
-});
-
 var TextView = Marionette.ItemView.extend({
   tagName: 'div',
   className: 'radio bg-primary text_container',
@@ -68,6 +55,7 @@ var TextView = Marionette.ItemView.extend({
 });
 
 export var ListView = Marionette.CompositeView.extend({
+  el: '#list',
   template: '#list-template',
   childView: TextView,
   childViewContainer: '#textList',
@@ -76,31 +64,50 @@ export var ListView = Marionette.CompositeView.extend({
       childIndex: index
     };
   },
-  onRender: function(){
+  renderImage: function(){
     renderMagicEye(
       this.collection.toJSON()[0].text
     );
+  },
+  onRender: function(){
+    this.renderImage();
   },
   ui: {
     button: 'button[name=refresh]',
+    tab: '.textTab',
   },
   events: {
-    'click @ui.button': 'refreshText'
+    'click @ui.button': 'refreshText',
+    'click @ui.tab': 'clickTab'
   },
   refreshText: function(){
     this.collection.refresh();
-    renderMagicEye(
-      this.collection.toJSON()[0].text
-    );
-    $('input[name=textRadio]:first').focus();
-  }
-});
+    this.renderImage();
+  },
+  clickTab: function(event){
+    // change active navigation tab
+    var index = $(event.target).parent('li').index();
+    this.ui.tab.removeClass('active');
+    $(this.ui.tab[index]).addClass('active');
 
-export var SideView = Marionette.LayoutView.extend({
-  el: '#side',
-  template: '#side-template',
-  regions: {
-    nav: '#nav',
-    list: '#list',
-  }
+    // English words list
+    if (index === 0) {
+      var wordList = new models.WordList();
+      // this.collection = wordList;
+      this.collection.set(wordList.toJSON());
+    // Kanji list
+    } else if (index === 1) {
+      var kanjiList = new models.KanjiList();
+      // this.collection = kanjiList;
+      this.collection.set(kanjiList.toJSON());
+    }
+  },
+  collectionEvents: {
+    'change': 'collectionChanged'
+  },
+  collectionChanged: function(){
+    console.log('f00');
+    this.renderImage();
+    $('input[name=textRadio]:first').focus();
+  },
 });
