@@ -77,13 +77,7 @@ export var ListView = Marionette.CompositeView.extend({
     'click @ui.button': 'refreshText'
   },
   refreshText: function(){
-    this.collection.set([
-      {text: randomWord(5), checked: "checked"},
-      {text: randomWord(5)},
-      {text: randomWord(5)},
-      {text: randomWord(5)},
-      {text: randomWord(5)}
-    ]);
+    this.collection.refresh();
     renderMagicEye(
       this.collection.toJSON()[0].text
     );

@@ -1,5 +1,3 @@
-import randomWord from 'random-word-by-length';
-
 import * as models from 'assets/js/models';
 import * as views from 'assets/js/views';
 
@@ -9,13 +7,7 @@ export function init() {
     height: 600
   });
 
-  var textList = new models.TextList([
-    {text: randomWord(5), checked: "checked"},
-    {text: randomWord(5)},
-    {text: randomWord(5)},
-    {text: randomWord(5)},
-    {text: randomWord(5)}
-  ]);
+  var textList = new models.TextList();
 
   var imageview = new views.ImageView({
     model: image
