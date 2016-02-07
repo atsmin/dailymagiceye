@@ -1,10 +1,11 @@
 import * as models from 'assets/js/models';
 import * as views from 'assets/js/views';
+import * as settings from 'assets/js/settings';
 
 export function init() {
   var image = new models.Image({
-    width: 800,
-    height: 600
+    width: settings.image_width,
+    height: settings.image_height
   });
 
   var textList = new models.TextList();

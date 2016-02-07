@@ -1,6 +1,7 @@
+import Backbone from 'backbone';
 import randomWord from 'random-word-by-length';
 
-import Backbone from 'backbone';
+import * as settings from 'assets/js/settings';
 
 // models
 export var Image = Backbone.Model.extend();
@@ -17,12 +18,11 @@ export var TextList = Backbone.Collection.extend({
     this.refresh();
   },
   refresh: function(){
-    this.set([
-      {text: randomWord(5), checked: "checked"},
-      {text: randomWord(5)},
-      {text: randomWord(5)},
-      {text: randomWord(5)},
-      {text: randomWord(5)}
-    ]);
+    var texts = [];
+    for (let i of Array(settings.num_of_texts).keys()) {
+      texts.push({text: randomWord(5)});
+    }
+    texts[0].checked = "checked";
+    this.set(texts);
   }
 });
