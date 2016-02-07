@@ -1,6 +1,6 @@
 import Marionette from 'backbone.marionette';
-
 import magiceye from 'magiceye';
+import textMapper from 'magiceye/depthmappers/TextDepthMapper.js';
 import randomWord from 'random-word-by-length';
 
 function randomRGBa() {
