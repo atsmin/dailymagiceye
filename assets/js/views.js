@@ -84,6 +84,7 @@ export var SideView = Marionette.CompositeView.extend({
     var mode = $('li.active').index();
     this.collection.refresh(mode);
     this.renderImage();
+    $('input[name=textRadio]:first').focus();
   },
   clickTab: function(event){
     // change active navigation tab
