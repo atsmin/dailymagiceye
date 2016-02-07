@@ -34,6 +34,17 @@ export var ImageView = Marionette.ItemView.extend({
 
 export var NavView = Marionette.ItemView.extend({
   template: '#nav-template',
+  ui: {
+    tab: 'li[name=textTab]',
+  },
+  events: {
+    'click @ui.tab': 'clickTab'
+  },
+  clickTab: function(event){
+    var index = $(event.target).parent('li').index();
+    this.ui.tab.removeClass('active');
+    $(this.ui.tab[index]).addClass('active');
+  },
 });
 
 var TextView = Marionette.ItemView.extend({
