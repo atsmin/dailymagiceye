@@ -12,35 +12,27 @@ var Text = Backbone.Model.extend({
   }
 });
 
-export var WordList = Backbone.Collection.extend({
+export var TextList = Backbone.Collection.extend({
   model: Text,
   initialize: function(){
     this.refresh();
   },
-  refresh: function(){
-    var texts = [];
-    for (let i of Array(settings.NUM_OF_TEXTS).keys()) {
-      texts.push({text: randomWord(5)});
+  refresh: function(mode = 0){
+    var generator;
+    if (mode === 0) {
+      generator = randomWord;
+    } else if (mode === 1) {
+      generator = this.randomKanji;
     }
-    texts[0].checked = "checked";
-    this.set(texts);
-  }
-});
 
-export var KanjiList = Backbone.Collection.extend({
-  model: Text,
-  initialize: function(){
-    this.refresh();
-  },
-  refresh: function(){
     var texts = [];
     for (let i of Array(settings.NUM_OF_TEXTS).keys()) {
-      texts.push({text: this.randomKanji(5)});
+      texts.push({text: generator(5)});
     }
     texts[0].checked = "checked";
-    this.set(texts);
+    this.reset(texts);
   },
-  randomKanji: function(){
+  randomKanji: function(args){
     /* unicode Kanji range
      * 4E00 ~ 9FFF */
     var first = '456789';

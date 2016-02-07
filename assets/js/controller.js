@@ -8,18 +8,18 @@ export function init() {
     height: settings.IMAGE_HEIGHT
   });
 
-  var wordList = new models.WordList();
+  var textList = new models.TextList();
 
   var imageview = new views.ImageView({
     model: image
   });
-  var listview = new views.ListView({
-    collection: wordList
+  var sideview = new views.SideView({
+    collection: textList
   });
 
   // render views
   imageview.render();
-  listview.render();
+  sideview.render();
 
   $('input[name=textRadio]:first').focus();
 }

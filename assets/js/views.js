@@ -54,9 +54,9 @@ var TextView = Marionette.ItemView.extend({
   }
 });
 
-export var ListView = Marionette.CompositeView.extend({
-  el: '#list',
-  template: '#list-template',
+export var SideView = Marionette.CompositeView.extend({
+  el: '#side',
+  template: '#side-template',
   childView: TextView,
   childViewContainer: '#textList',
   childViewOptions: function(model, index) {
@@ -80,8 +80,8 @@ export var ListView = Marionette.CompositeView.extend({
     'click @ui.button': 'refreshText',
     'click @ui.tab': 'clickTab'
   },
-  refreshText: function(){
-    this.collection.refresh();
+  refreshText: function(mode){
+    this.collection.refresh(mode);
     this.renderImage();
   },
   clickTab: function(event){
@@ -89,25 +89,6 @@ export var ListView = Marionette.CompositeView.extend({
     var index = $(event.target).parent('li').index();
     this.ui.tab.removeClass('active');
     $(this.ui.tab[index]).addClass('active');
-
-    // English words list
-    if (index === 0) {
-      var wordList = new models.WordList();
-      // this.collection = wordList;
-      this.collection.set(wordList.toJSON());
-    // Kanji list
-    } else if (index === 1) {
-      var kanjiList = new models.KanjiList();
-      // this.collection = kanjiList;
-      this.collection.set(kanjiList.toJSON());
-    }
-  },
-  collectionEvents: {
-    'change': 'collectionChanged'
-  },
-  collectionChanged: function(){
-    console.log('f00');
-    this.renderImage();
-    $('input[name=textRadio]:first').focus();
+    this.refreshText(index);
   },
 });
