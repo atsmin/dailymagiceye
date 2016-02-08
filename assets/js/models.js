@@ -18,17 +18,17 @@ export var TextList = Backbone.Collection.extend({
     this.refresh();
   },
   refresh: function(mode = 0){
-    var generator, args;
+    var factory, args;
     if (mode === 0) {
-      [generator, args] = [randomWord, settings.MAX_WORDS_LEN];
+      [factory, args] = [randomWord, settings.MAX_WORDS_LEN];
       args = settings.MAX_WORDS_LEN;
     } else if (mode === 1) {
-      [generator, args] = [this.randomKanji, null];
+      [factory, args] = [this.randomKanji, null];
     }
 
     var texts = [];
     for (let i of Array(settings.NUM_OF_TEXTS).keys()) {
-      texts.push({text: generator(args)});
+      texts.push({text: factory(args)});
     }
     texts[0].checked = "checked";
     this.reset(texts);
