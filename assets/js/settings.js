@@ -10,5 +10,6 @@ export const MAX_WORDS_LEN = 5;
 
 export const MODE = {
    'words': 0,
-   'kanji': 1
+   'kanji': 1,
+   'snowman': 2
 }

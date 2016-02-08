@@ -2,6 +2,7 @@ import Backbone from 'backbone';
 import randomWord from 'random-word-by-length';
 
 import * as settings from 'assets/js/settings';
+import * as utils from 'assets/js/utils';
 
 // models
 export var Image = Backbone.Model.extend();
@@ -32,16 +33,24 @@ export var TextList = Backbone.Collection.extend({
       return [randomWord, settings.MAX_WORDS_LEN];
     } else if (mode === settings.MODE['kanji']) {
       return [this.randomKanji, null];
+    } else if (mode === settings.MODE['snowman']) {
+      return [this.snowMan, null];
     }
   },
   randomKanji: function(args){
     /* unicode Kanji range
      * 4E00 ~ 9FC3 */
-    var _choose = function(range){ return range[Math.floor(Math.random()*range.length)]; };
     var first, second, third, last;
     [first, second, third, last] = ['456789', 'EF', '0123456789ABC', '0123'];
     return unescape(
-      '%u' + _choose(first) + _choose(second) +_choose(third) +_choose(last)
+      '%u' +
+      utils.randomChoice(first) + utils.randomChoice(second) +
+      utils.randomChoice(third) +utils.randomChoice(last)
     );
-  }
+  },
+  snowMan: function(args){
+    /* unicode Snowman
+     * 2603 */
+    return unescape('%u2603');
+  },
 });
