@@ -9,7 +9,8 @@ export const NUM_OF_TEXTS = 5;
 export const MAX_WORDS_LEN = 5;
 
 export const MODE = {
-   'words': 0,
+   'word': 0,
    'kanji': 1,
-   'snowman': 2
+   'symbol': 2,
+   'snowman': 3
 }

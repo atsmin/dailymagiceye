@@ -18,7 +18,7 @@ export var TextList = Backbone.Collection.extend({
   initialize: function(){
     this.refresh();
   },
-  refresh: function(mode = settings.MODE['words']){
+  refresh: function(mode = settings.MODE['word']){
     var factory, args;
     [factory, args] = this.getFactory(mode);
     var texts = [];
@@ -29,10 +29,12 @@ export var TextList = Backbone.Collection.extend({
     this.reset(texts);
   },
   getFactory: function(mode){
-    if (mode === settings.MODE['words']) {
+    if (mode === settings.MODE['word']) {
       return [randomWord, settings.MAX_WORDS_LEN];
     } else if (mode === settings.MODE['kanji']) {
       return [this.randomKanji, null];
+    } else if (mode === settings.MODE['symbol']) {
+      return [this.randomSymbol, null];
     } else if (mode === settings.MODE['snowman']) {
       return [this.snowMan, null];
     }
@@ -46,6 +48,15 @@ export var TextList = Backbone.Collection.extend({
       '%u' +
       utils.randomChoice(first) + utils.randomChoice(second) +
       utils.randomChoice(third) +utils.randomChoice(last)
+    );
+  },
+  randomSymbol: function(args){
+    /* unicode Symbol range
+     * 2600 ~ 269D */
+    var first, second;
+    [first, second] = ['0123456789', '0123456789ABCD'];
+    return unescape(
+      '%u26' + utils.randomChoice(first) + utils.randomChoice(second)
     );
   },
   snowMan: function(args){
