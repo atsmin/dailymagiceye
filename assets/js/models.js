@@ -17,12 +17,12 @@ export var TextList = Backbone.Collection.extend({
   initialize: function(){
     this.refresh();
   },
-  refresh: function(mode = 0){
+  refresh: function(mode = settings.MODE['words']){
     var factory, args;
-    if (mode === 0) {
+    if (mode === settings.MODE['words']) {
       [factory, args] = [randomWord, settings.MAX_WORDS_LEN];
       args = settings.MAX_WORDS_LEN;
-    } else if (mode === 1) {
+    } else if (mode === settings.MODE['kanji']) {
       [factory, args] = [this.randomKanji, null];
     }
 
