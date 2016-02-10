@@ -9,3 +9,6 @@
 .btn-success {
   margin-top: 5px;
 }
+#spinner {
+  position: relative;
+}
