@@ -2,8 +2,10 @@ import Marionette from 'backbone.marionette';
 import magiceye from 'magiceye';
 import textMapper from 'magiceye/depthmappers/TextDepthMapper.js';
 import randomWord from 'random-word-by-length';
+import async from 'caolan/async';
 
 import * as models from 'assets/js/models';
+import * as utils from 'assets/js/utils';
 
 function randomRGBa() {
   return [Math.floor(Math.random() * 256),
@@ -20,12 +22,19 @@ function generatePalette(numColors) {
   return palette;
 }
 
-function renderMagicEye(word) {
-    magiceye.render({
-      el: 'magic-eye',
-      colors: generatePalette(10),
-      depthMapper: new magiceye.TextDepthMapper(word)
-    });
+function renderMagicEye(text) {
+    var spinner = utils.SpinnerSingleton.getSpinner();
+    async.waterfall([
+      function(callback){ spinner.spin(); callback(); },
+      function(callback){
+        magiceye.render({
+          el: 'magic-eye',
+          colors: generatePalette(10),
+          depthMapper: new magiceye.TextDepthMapper(text)
+        }); callback();
+      },
+      function(callback){ spinner.stop(); callback(); },
+    ]);
   }
 
 // views
@@ -51,7 +60,7 @@ var TextView = Marionette.ItemView.extend({
     return {
       index: this.options.childIndex
     };
-  }
+  },
 });
 
 export var SideView = Marionette.CompositeView.extend({
