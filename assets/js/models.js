@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import Backbone from 'backbone';
 import randomWord from 'random-word-by-length';
 
@@ -19,27 +20,26 @@ export var TextList = Backbone.Collection.extend({
     this.refresh();
   },
   refresh: function(mode = settings.MODE['word']){
-    var textFactory, args;
-    [textFactory, args] = this.getTextFactory(mode);
+    var textFactory = this.getTextFactory(mode);
     var texts = [];
     for (let i of Array(settings.NUM_OF_TEXTS).keys()) {
-      texts.push({text: textFactory(args)});
+      texts.push({text: textFactory()});
     }
     texts[0].checked = "checked";
     this.reset(texts);
   },
   getTextFactory: function(mode){
     if (mode === settings.MODE['word']) {
-      return [randomWord, settings.MAX_WORDS_LEN];
+      return _.partial(randomWord, settings.MAX_WORDS_LEN);
     } else if (mode === settings.MODE['kanji']) {
-      return [this.randomKanji, null];
+      return this.randomKanji;
     } else if (mode === settings.MODE['symbol']) {
-      return [this.randomSymbol, null];
+      return this.randomSymbol;
     } else if (mode === settings.MODE['snowman']) {
-      return [this.snowMan, null];
+      return this.snowMan;
     }
   },
-  randomKanji: function(args){
+  randomKanji: function(){
     /* unicode Kanji range
      * 4E00 ~ 9FC3 */
     var first, second, third, last;
@@ -50,7 +50,7 @@ export var TextList = Backbone.Collection.extend({
       utils.randomChoice(third) +utils.randomChoice(last)
     );
   },
-  randomSymbol: function(args){
+  randomSymbol: function(){
     /* unicode Symbol range
      * 2600 ~ 269D */
     var first, second;
@@ -59,7 +59,7 @@ export var TextList = Backbone.Collection.extend({
       '%u26' + utils.randomChoice(first) + utils.randomChoice(second)
     );
   },
-  snowMan: function(args){
+  snowMan: function(){
     /* unicode Snowman
      * 2603 */
     return unescape('%u2603');
