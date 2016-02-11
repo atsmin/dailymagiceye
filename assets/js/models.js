@@ -19,16 +19,16 @@ export var TextList = Backbone.Collection.extend({
     this.refresh();
   },
   refresh: function(mode = settings.MODE['word']){
-    var factory, args;
-    [factory, args] = this.getFactory(mode);
+    var textFactory, args;
+    [textFactory, args] = this.getTextFactory(mode);
     var texts = [];
     for (let i of Array(settings.NUM_OF_TEXTS).keys()) {
-      texts.push({text: factory(args)});
+      texts.push({text: textFactory(args)});
     }
     texts[0].checked = "checked";
     this.reset(texts);
   },
-  getFactory: function(mode){
+  getTextFactory: function(mode){
     if (mode === settings.MODE['word']) {
       return [randomWord, settings.MAX_WORDS_LEN];
     } else if (mode === settings.MODE['kanji']) {
