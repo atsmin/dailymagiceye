@@ -1,3 +1,17 @@
+h1 {
+  background: #c1e4e9;
+  color: #007bbb;
+  border: 2px dashed #698aab;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 3px #c1e4e9;
+  text-shadow: 0 0 5px;
+  padding: 10px;
+}
+h2 {
+  border-bottom: 1px solid #006e54;
+  border-left: 10px solid #006e54;
+  padding: 7px
+}
 .center {
   margin: auto;
   width: 100%;
