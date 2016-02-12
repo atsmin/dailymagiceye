@@ -22,7 +22,7 @@ export var TextList = Backbone.Collection.extend({
   refresh: function(mode = settings.MODE['word']){
     var textFactory = this.getTextFactory(mode);
     var texts = [];
-    for (let i of Array(settings.NUM_OF_TEXTS).keys()) {
+    for (let _ of Array(settings.NUM_OF_TEXTS)) {
       texts.push({text: textFactory()});
     }
     texts[0].checked = "checked";
