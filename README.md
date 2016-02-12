@@ -4,7 +4,7 @@ Random text magiceye page for daily visual recorvery
 
 http://dailymagiceye-env.elasticbeanstalk.com
 
-using [MagicEye.js](http://peeinears.github.io/MagicEye.js/)
+thank you for [MagicEye.js](http://peeinears.github.io/MagicEye.js/)
 
 # Docker Image
 
