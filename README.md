@@ -1,7 +1,7 @@
 # dailymagiceye
 Daily MagicEye
 
-Random text magiceye page for visual recorvery.
+Random text magiceye page for daily visual recorvery
 
 http://dailymagiceye-env.elasticbeanstalk.com
 
