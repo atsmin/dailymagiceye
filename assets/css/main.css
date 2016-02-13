@@ -9,9 +9,13 @@ h1 {
   text-align: center;
 }
 h2 {
-  border-bottom: 1px solid #006e54;
-  border-left: 10px solid #006e54;
-  padding: 7px
+  border-bottom: 1px solid #fe4118;
+  border-left: 10px solid #fe4118;
+  padding: 7px;
+  color: #007bbb;
+}
+body {
+  background-image: url('../images/Elegant_Background-2.jpg');
 }
 .wrapper {
   width: 100%;
