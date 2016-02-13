@@ -1,6 +1,6 @@
 // image size
-export const IMAGE_WIDTH = window.innerWidth * 0.6;
-export const IMAGE_HEIGHT = window.innerHeight * 0.9;
+export const IMAGE_WIDTH = window.innerWidth;
+export const IMAGE_HEIGHT = window.innerWidth * 0.8;
 
 // number of magic texts
 export const NUM_OF_TEXTS = 5;
