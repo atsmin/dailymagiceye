@@ -2,7 +2,7 @@
 
 Random text magiceye page for daily visual recorvery
 
-http://dailymagiceye-env.elasticbeanstalk.com
+ http://dailymagiceye-env.elasticbeanstalk.com
 
 Thank you for [MagicEye.js](http://peeinears.github.io/MagicEye.js/)
 
