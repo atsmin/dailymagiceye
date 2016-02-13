@@ -1,7 +1,6 @@
 {
   "jspm": {
     "dependencies": {
-      "HubSpot/pace": "github:HubSpot/pace@^1.0.2",
       "backbone": "npm:backbone@^1.2.3",
       "backbone.marionette": "npm:backbone.marionette@^2.4.4",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",

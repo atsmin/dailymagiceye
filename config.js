@@ -14,7 +14,6 @@ System.config({
   },
 
   map: {
-    "HubSpot/pace": "github:HubSpot/pace@1.0.2",
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "backbone": "npm:backbone@1.2.3",
