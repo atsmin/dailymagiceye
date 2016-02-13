@@ -1,6 +1,14 @@
 // image size
-export const IMAGE_WIDTH = window.innerWidth;
-export const IMAGE_HEIGHT = window.innerWidth * 0.8;
+var imageWidth, imageHeight;
+if (screen.availWidth > 480) {
+  // PC
+  [imageWidth, imageHeight] = [window.innerWidth * 0.5, 500];
+} else {
+  // Mobile
+  [imageWidth, imageHeight] = [window.innerWidth, 500];
+}
+export const IMAGE_WIDTH = imageWidth;
+export const IMAGE_HEIGHT = imageHeight;
 
 // number of magic texts
 export const NUM_OF_TEXTS = 5;

@@ -6,15 +6,19 @@ h1 {
   box-shadow: 0 0 3px 3px #c1e4e9;
   text-shadow: 0 0 5px;
   padding: 10px;
+  text-align: center;
 }
 h2 {
   border-bottom: 1px solid #006e54;
   border-left: 10px solid #006e54;
   padding: 7px
 }
-.center {
-  margin: auto;
+.wrapper {
   width: 100%;
+}
+.center {
+  width: 80%;
+  margin: 0 auto;
 }
 .box {
   float: left;
@@ -30,3 +34,13 @@ h2 {
 #spinner {
   position: relative;
 }
+
+/* mobile only */
+@media only screen and (max-device-width: 480px) {
+
+.box { width: 100%; }
+.center { width: 100%; }
+
+}
+
+
