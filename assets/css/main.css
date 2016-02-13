@@ -11,6 +11,7 @@ h1 {
 h2 {
   border-bottom: 1px solid #fe4118;
   border-left: 10px solid #fe4118;
+  text-shadow: 0 0 5px;
   padding: 7px;
   color: #007bbb;
 }
