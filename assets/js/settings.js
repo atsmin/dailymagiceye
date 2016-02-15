@@ -1,8 +1,8 @@
 // image size
 var imageWidth, imageHeight;
-if (screen.availWidth > 480) {
+if (screen.availWidth > 320) {
   // PC
-  [imageWidth, imageHeight] = [window.innerWidth * 0.5, 500];
+  [imageWidth, imageHeight] = [window.innerWidth * 0.5, window.innerHeight * 0.75];
 } else {
   // Mobile
   [imageWidth, imageHeight] = [window.innerWidth, 500];
