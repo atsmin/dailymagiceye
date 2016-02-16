@@ -4,7 +4,7 @@ import textMapper from 'magiceye/depthmappers/TextDepthMapper.js';
 import randomWord from 'random-word-by-length';
 import async from 'caolan/async';
 
-import { SpinnerSingleton } from 'assets/js/utils';
+import { getImageSize, SpinnerSingleton } from 'assets/js/utils';
 
 function randomRGBa() {
   return [Math.floor(Math.random() * 256),
@@ -40,6 +40,31 @@ function renderMagicEye(text) {
 export var ImageView = Marionette.ItemView.extend({
   el: '#image',
   template: '#image-template',
+  initialize: function() {
+    $(window).on('resize.imageview', this.onResize.bind(this));
+  },
+  onDestroy: function() {
+    $(window).off('resize.imageview');
+  },
+  onResize: function() {
+    var imageWidth, imageHeight;
+    [imageWidth, imageHeight] = getImageSize();
+    this.model.set({width: imageWidth, height: imageHeight});
+  },
+  modelEvents: {
+    'change': 'refresh'
+  },
+  refresh: function() {
+    var that = this;
+    async.waterfall([
+      function(callback) { that.render(); callback(); },
+      function(callback) {
+        renderMagicEye(
+          $('input[name=textRadio]:checked').val()
+        ); callback();
+      }
+    ]);
+  }
 });
 
 var TextView = Marionette.ItemView.extend({

@@ -6,6 +6,16 @@ export function randomChoice(array) {
   return array[Math.floor(Math.random()*array.length)];
 };
 
+export function getImageSize() {
+  if (window.innerWidth > window.innerHeight) {
+    // PC
+    return [window.innerWidth * 0.5, window.innerHeight * 0.75];
+  } else {
+    // Mobile
+    return [window.innerWidth, 500];
+  }
+}
+
 var instance = Symbol();
 export class SpinnerSingleton {
   static getSpinner() {
