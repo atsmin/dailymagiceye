@@ -4,7 +4,6 @@ import textMapper from 'magiceye/depthmappers/TextDepthMapper.js';
 import randomWord from 'random-word-by-length';
 import async from 'caolan/async';
 
-import * as models from 'assets/js/models';
 import * as utils from 'assets/js/utils';
 
 function randomRGBa() {
