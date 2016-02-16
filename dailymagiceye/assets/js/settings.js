@@ -1,6 +1,6 @@
 // image size
 var imageWidth, imageHeight;
-if (screen.availWidth > 560) {
+if (screen.availWidth > screen.availHeight) {
   // PC
   [imageWidth, imageHeight] = [window.innerWidth * 0.5, window.innerHeight * 0.75];
 } else {
