@@ -4,7 +4,7 @@ import textMapper from 'magiceye/depthmappers/TextDepthMapper.js';
 import randomWord from 'random-word-by-length';
 import async from 'caolan/async';
 
-import * as utils from 'assets/js/utils';
+import { SpinnerSingleton } from 'assets/js/utils';
 
 function randomRGBa() {
   return [Math.floor(Math.random() * 256),
@@ -22,7 +22,7 @@ function generatePalette(numColors) {
 }
 
 function renderMagicEye(text) {
-    var spinner = utils.SpinnerSingleton.getSpinner();
+    var spinner = SpinnerSingleton.getSpinner();
     async.waterfall([
       function(callback){ spinner.spin(); callback(); },
       function(callback){

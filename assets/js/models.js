@@ -2,8 +2,8 @@ import _ from 'lodash';
 import Backbone from 'backbone';
 import randomWord from 'random-word-by-length';
 
-import * as settings from 'assets/js/settings';
-import * as utils from 'assets/js/utils';
+import { MODE, NUM_OF_TEXTS, MAX_WORDS_LEN } from 'assets/js/settings';
+import { randomChoice } from 'assets/js/utils';
 
 // models
 export var Image = Backbone.Model.extend();
@@ -19,23 +19,23 @@ export var TextList = Backbone.Collection.extend({
   initialize: function(){
     this.refresh();
   },
-  refresh: function(mode = settings.MODE['word']){
+  refresh: function(mode = MODE['word']){
     var textFactory = this.getTextFactory(mode);
     var texts = [];
-    for (let _ of Array(settings.NUM_OF_TEXTS)) {
+    for (let _ of Array(NUM_OF_TEXTS)) {
       texts.push({text: textFactory()});
     }
     texts[0].checked = "checked";
     this.reset(texts);
   },
   getTextFactory: function(mode){
-    if (mode === settings.MODE['word']) {
-      return _.partial(randomWord, settings.MAX_WORDS_LEN);
-    } else if (mode === settings.MODE['kanji']) {
+    if (mode === MODE['word']) {
+      return _.partial(randomWord, MAX_WORDS_LEN);
+    } else if (mode === MODE['kanji']) {
       return this.randomKanji;
-    } else if (mode === settings.MODE['symbol']) {
+    } else if (mode === MODE['symbol']) {
       return this.randomSymbol;
-    } else if (mode === settings.MODE['snowman']) {
+    } else if (mode === MODE['snowman']) {
       return this.snowMan;
     }
   },
@@ -46,8 +46,8 @@ export var TextList = Backbone.Collection.extend({
     [first, second, third, last] = ['456789', 'EF', '0123456789ABC', '0123'];
     return unescape(
       '%u' +
-      utils.randomChoice(first) + utils.randomChoice(second) +
-      utils.randomChoice(third) +utils.randomChoice(last)
+      randomChoice(first) + randomChoice(second) +
+      randomChoice(third) +randomChoice(last)
     );
   },
   randomSymbol: function(){
@@ -56,7 +56,7 @@ export var TextList = Backbone.Collection.extend({
     var first, second;
     [first, second] = ['0123456789', '0123456789ABCD'];
     return unescape(
-      '%u26' + utils.randomChoice(first) + utils.randomChoice(second)
+      '%u26' + randomChoice(first) + randomChoice(second)
     );
   },
   snowMan: function(){
