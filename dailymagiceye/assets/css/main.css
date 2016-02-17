@@ -41,11 +41,15 @@ body {
 }
 
 /* mobile only */
-@media only screen and (max-device-width: 480px) {
-
-.box { width: 100%; }
-.center { width: 100%; }
-
+@media screen and (max-width: 600px) {
+  .box {
+    width: 100%;
+    margin: 0px;
+    margin-top: 15px;
+  }
+  .center {
+    width: 100%;
+  }
 }
 
 
