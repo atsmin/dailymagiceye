@@ -9,4 +9,4 @@ export const MODE = {
    'kanji': 1,
    'symbol': 2,
    'snowman': 3
-}
+};

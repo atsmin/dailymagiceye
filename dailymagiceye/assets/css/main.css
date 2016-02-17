@@ -28,6 +28,7 @@ body {
 .box {
   float: left;
   margin: 15px;
+  margin-top: 10px;
 }
 .text_container {
   font-size: 20px;

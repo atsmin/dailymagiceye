@@ -19,7 +19,7 @@ export var TextList = Backbone.Collection.extend({
   initialize: function(){
     this.refresh();
   },
-  refresh: function(mode = MODE['word']){
+  refresh: function(mode = MODE.word){
     var textFactory = this.getTextFactory(mode);
     var texts = [];
     for (let _ of Array(NUM_OF_TEXTS)) {
@@ -29,13 +29,13 @@ export var TextList = Backbone.Collection.extend({
     this.reset(texts);
   },
   getTextFactory: function(mode){
-    if (mode === MODE['word']) {
+    if (mode === MODE.word) {
       return _.partial(randomWord, MAX_WORDS_LEN);
-    } else if (mode === MODE['kanji']) {
+    } else if (mode === MODE.kanji) {
       return this.randomKanji;
-    } else if (mode === MODE['symbol']) {
+    } else if (mode === MODE.symbol) {
       return this.randomSymbol;
-    } else if (mode === MODE['snowman']) {
+    } else if (mode === MODE.snowman) {
       return this.snowMan;
     }
   },
