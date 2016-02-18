@@ -62,7 +62,9 @@ export var ImageView = Marionette.ItemView.extend({
         renderMagicEye(
           $('input[name=textRadio]:checked').val()
         ); callback();
-      }
+      },
+      // reset spinner after rerender image view
+      function(callback) { SpinnerSingleton.remove(); callback(); },
     ]);
   }
 });

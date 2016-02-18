@@ -19,7 +19,7 @@ export function getImageSize() {
 var instance = Symbol();
 export class SpinnerSingleton {
   static getSpinner() {
-    if (this[instance] === undefined) {
+    if (!this[instance]) {
       var target = document.getElementById('spinner');
       var opts = {lines: 13, length: 40, width: 15, radius: 60, scale: 1.25};
       var spinner = new Spinner(opts);
@@ -29,5 +29,8 @@ export class SpinnerSingleton {
     } else {
       return this[instance];
     }
+  }
+  static remove() {
+    this[instance] = null;
   }
 }
