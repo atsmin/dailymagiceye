@@ -12,7 +12,7 @@ export function getImageSize() {
     return [window.innerWidth * 0.5, window.innerHeight * 0.75];
   } else {
     // Mobile
-    return [window.innerWidth, window.innerHeight * 0.4];
+    return [window.innerWidth, window.innerHeight * 0.5];
   }
 }
 
