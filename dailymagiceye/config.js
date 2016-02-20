@@ -18,7 +18,6 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "backbone": "npm:backbone@1.2.3",
     "backbone.marionette": "npm:backbone.marionette@2.4.4",
-    "bootstrap": "github:twbs/bootstrap@3.3.6",
     "caolan/async": "github:caolan/async@1.5.2",
     "core-js": "npm:core-js@1.2.6",
     "fgnass/spin.js": "github:fgnass/spin.js@2.3.2",
@@ -37,9 +36,6 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
-    },
-    "github:twbs/bootstrap@3.3.6": {
-      "jquery": "github:components/jquery@2.2.0"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
