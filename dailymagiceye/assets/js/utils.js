@@ -9,7 +9,7 @@ export function randomChoice(array) {
 export function getImageSize() {
   if (window.innerWidth > window.innerHeight) {
     // PC
-    return [window.innerWidth * 0.5, window.innerHeight * 0.75];
+    return [window.innerWidth * 0.45, window.innerHeight * 0.75];
   } else {
     // Mobile
     return [window.innerWidth, window.innerHeight * 0.5];

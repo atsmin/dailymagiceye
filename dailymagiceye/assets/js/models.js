@@ -31,12 +31,32 @@ export var TextList = Backbone.Collection.extend({
   getTextFactory: function(mode){
     if (mode === MODE.word) {
       return _.partial(randomWord, MAX_WORDS_LEN);
+    } else if (mode === MODE.kana) {
+      return this.randomKana;
     } else if (mode === MODE.kanji) {
       return this.randomKanji;
+    } else if (mode === MODE.hangul) {
+      return this.randomHangul;
     } else if (mode === MODE.symbol) {
       return this.randomSymbol;
-    } else if (mode === MODE.snowman) {
-      return this.snowMan;
+    }
+  },
+  randomKana: function(){
+    /* unicode Hiragana range
+     * 3040 ~ 3096
+     * unicode Katakana range
+     * 30A0 ~ 30FF */
+    var first, second;
+    if (Math.random() < 0.5) {
+      [first, second] = ['456789', '0123456'];
+      return unescape(
+        '%u30' + randomChoice(first) + randomChoice(second)
+      );
+    } else {
+      [first, second] = ['ABCDEF', '0123456789ABCDEF'];
+      return unescape(
+        '%u30' + randomChoice(first) + randomChoice(second)
+      );
     }
   },
   randomKanji: function(){
@@ -47,7 +67,16 @@ export var TextList = Backbone.Collection.extend({
     return unescape(
       '%u' +
       randomChoice(first) + randomChoice(second) +
-      randomChoice(third) +randomChoice(last)
+      randomChoice(third) + randomChoice(last)
+    );
+  },
+  randomHangul: function() {
+    /* unicode Hangul range
+     * AC00 ~ AFFF */
+    var first, second;
+    [first, second] = ['CDEF', '0123456789ABCDEF'];
+    return unescape(
+      '%uA' + randomChoice(first) + randomChoice(second) + randomChoice(second)
     );
   },
   randomSymbol: function(){
