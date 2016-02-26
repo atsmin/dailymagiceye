@@ -2,13 +2,9 @@ import $ from 'jquery';
 import _ from 'lodash';
 import Spinner from 'fgnass/spin.js';
 
-export function randomChoice(array) {
-  return array[Math.floor(Math.random() * array.length)];
-}
-
 export function randomHex(start, end) {
   hex = _.range(0, 10).concat('ABCDEF'.split(''));
-  return randomChoice(_.slice(hex, hex.indexOf(start), hex.indexOf(end) + 1));
+  return _.sample(_.slice(hex, hex.indexOf(start), hex.indexOf(end) + 1));
 }
 
 export function getImageSize() {
