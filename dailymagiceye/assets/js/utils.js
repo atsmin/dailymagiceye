@@ -3,7 +3,7 @@ import _ from 'lodash';
 import Spinner from 'fgnass/spin.js';
 
 export function randomChoice(array) {
-  return array[Math.floor(Math.random()*array.length)];
+  return array[Math.floor(Math.random() * array.length)];
 }
 
 export function getImageSize() {
@@ -12,7 +12,7 @@ export function getImageSize() {
     return [window.innerWidth * 0.50, window.innerHeight * 0.75];
   } else {
     // Mobile
-    return [window.innerWidth, window.innerHeight * 0.5];
+    return [window.innerWidth, window.innerHeight * 0.50];
   }
 }
 
