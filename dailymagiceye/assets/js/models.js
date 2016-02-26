@@ -29,15 +29,16 @@ export var TextList = Backbone.Collection.extend({
     this.reset(texts);
   },
   getTextFactory: function(mode){
-    if (mode === MODE.word) {
+    switch (mode) {
+    case MODE.word:
       return _.partial(randomWord, MAX_WORDS_LEN);
-    } else if (mode === MODE.kana) {
+    case MODE.kana:
       return this.randomKana;
-    } else if (mode === MODE.kanji) {
+    case MODE.kanji:
       return this.randomKanji;
-    } else if (mode === MODE.hangul) {
+    case MODE.hangul:
       return this.randomHangul;
-    } else if (mode === MODE.symbol) {
+    case MODE.symbol:
       return this.randomSymbol;
     }
   },
