@@ -11,7 +11,7 @@ export function getImageSize() {
   if (window.innerWidth > window.innerHeight) {
     if (screen.width < 680) {
       // Mobile (landscape)
-      return [window.innerWidth * 0.85, window.innerHeight];
+      return [window.innerWidth, window.innerHeight];
     }
     // PC
     return [window.innerWidth * 0.50, window.innerHeight * 0.75];
