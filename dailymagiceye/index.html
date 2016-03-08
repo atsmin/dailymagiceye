@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
     <!-- Bootstrap3 Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/introjs.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/main.css" type="text/css">
     <script src="build.js"></script>
     <!-- templates -->
     <script type="text/template" id="image-template">
@@ -21,20 +22,21 @@
     </script>
     <script type="text/template" id="side-template">
       <h2>Select <small>magic text</small></h2>
-      <ul class="nav nav-tabs">
+      <ul id="nav" class="nav nav-tabs">
         <li class="textTab active" role="presentation"><a href="#">Word</a></li>
         <li class="textTab" role="presentation"><a href="#">Kana</a></li>
         <li class="textTab" role="presentation"><a href="#">Kanji</a></li>
         <li class="textTab" role="presentation"><a href="#">Hangul</a></li>
         <li class="textTab" role="presentation"><a href="#">Symbol</a></li>
       </ul>
-      <div id='textList'></div>
-      <button type="button" class="btn btn-success btn-lg" name="refresh">Refresh</button>
+      <div id="textList"></div>
+      <button type="button" id="refresh" name="refresh" class="btn btn-success btn-lg">Refresh</button>
+      <a id="help" hef="#">What's this?</a>
     </script>
   </head>
   <body>
     <div class="wrapper">
-      <h1>Daily MagicEye<br><em><small>-visual recovery-</small></em></h1>
+      <h1 id="title">Daily MagicEye<br><em><small>-visual recovery-</small></em></h1>
       <div class="center">
         <div id="side" class="box"></div>
         <div id="image" class="box"></div>

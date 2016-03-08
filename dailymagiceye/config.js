@@ -21,6 +21,7 @@ System.config({
     "caolan/async": "github:caolan/async@1.5.2",
     "core-js": "npm:core-js@1.2.6",
     "fgnass/spin.js": "github:fgnass/spin.js@2.3.2",
+    "intro.js": "npm:intro.js@2.0.0",
     "jquery": "npm:jquery@2.2.0",
     "lodash": "npm:lodash@4.0.0",
     "magiceye": "github:peeinears/MagicEye.js@master",
@@ -72,6 +73,9 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:intro.js@2.0.0": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:lodash@4.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"

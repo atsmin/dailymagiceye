@@ -5,6 +5,7 @@
       "backbone.marionette": "npm:backbone.marionette@^2.4.4",
       "caolan/async": "github:caolan/async@^1.5.2",
       "fgnass/spin.js": "github:fgnass/spin.js@^2.3.2",
+      "intro.js": "npm:intro.js@^2.0.0",
       "jquery": "npm:jquery@^2.2.0",
       "lodash": "npm:lodash@^4.0.0",
       "magiceye": "github:peeinears/MagicEye.js@master",

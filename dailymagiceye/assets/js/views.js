@@ -3,6 +3,7 @@ import magiceye from 'magiceye';
 import textMapper from 'magiceye/depthmappers/TextDepthMapper.js';
 import randomWord from 'random-word-by-length';
 import async from 'caolan/async';
+import introJs from 'intro.js'
 
 import { getImageSize, SpinnerSingleton } from 'assets/js/utils';
 
@@ -110,10 +111,12 @@ export var SideView = Marionette.CompositeView.extend({
   ui: {
     button: 'button[name=refresh]',
     tab: '.textTab',
+    help: '#help',
   },
   events: {
     'click @ui.button': 'refreshText',
-    'click @ui.tab': 'clickTab'
+    'click @ui.tab': 'clickTab',
+    'click @ui.help': 'showIntro'
   },
   refreshText: function(){
     var mode = $('li.active').index();
@@ -128,4 +131,37 @@ export var SideView = Marionette.CompositeView.extend({
     $(this.ui.tab[index]).addClass('active');
     this.refreshText();
   },
+  showIntro: function(){
+    var intro = introJs.introJs();
+    intro.setOptions({
+      steps: [
+        {
+          element: document.querySelector('#title'),
+          intro: "Welcome to Daily MagicEye! This is a random word autostereogram app for visual recovery(I hope).",
+          position: "bottom"
+        },
+        {
+          element: document.querySelectorAll('#magic-eye')[0],
+          intro: "Here's the MagicEye image, one word is floating on it. Can you find it?",
+          position: "top"
+        },
+        {
+          element: '#textList',
+          intro: "You can choose the floating word here.",
+          position: "top"
+        },
+        {
+          element: '#nav',
+          intro: "You can also select type of words here.",
+          position: "top"
+        },
+        {
+          element: '#refresh',
+          intro: "The words are generated randomly. So you can reload them.",
+          position: "top"
+        },
+      ]
+    });
+    intro.start();
+  }
 });

@@ -40,6 +40,13 @@ body {
 #spinner {
   position: relative;
 }
+#help {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
+  text-decoration: underline;
+  cursor: help;
+}
 
 /* mobile only */
 @media screen and (max-width: 680px) {
