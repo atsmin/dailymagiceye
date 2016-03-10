@@ -141,11 +141,11 @@ export var SideView = Marionette.CompositeView.extend({
     intro.setOptions({
       steps: [
         {
-          element: document.querySelector('#title'),
+          element: '#title',
           intro: `Welcome to Daily MagicEye! This is a random word <a href=${link1} target="_blank">autostereogram</a> app for visual recovery(I hope).`,
         },
         {
-          element: document.querySelectorAll('#magic-eye')[0],
+          element: '#magic-eye',
           intro: `Here's the MagicEye image, one word is floating on it. <a href=${link2} target="_blank">Can you find it?</a>`,
         },
         {
