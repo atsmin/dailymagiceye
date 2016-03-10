@@ -133,16 +133,18 @@ export var SideView = Marionette.CompositeView.extend({
   },
   showIntro: function(){
     var intro = introJs.introJs();
+    var link1 = "https://en.wikipedia.org/wiki/Autostereogramhttps://en.wikipedia.org/wiki/Autostereogram";
+    var link2 = "http://www.colorstereo.com/texts_.txt/practice.htm";
     intro.setOptions({
       steps: [
         {
           element: document.querySelector('#title'),
-          intro: "Welcome to Daily MagicEye! This is a random word autostereogram app for visual recovery(I hope).",
+          intro: `Welcome to Daily MagicEye! This is a random word <a href=${link1} target="_blank">autostereogram</a> app for visual recovery(I hope).`,
           position: "bottom"
         },
         {
           element: document.querySelectorAll('#magic-eye')[0],
-          intro: "Here's the MagicEye image, one word is floating on it. Can you find it?",
+          intro: `Here's the MagicEye image, one word is floating on it. <a href=${link2} target="_blank">Can you find it?</a>`,
           position: "top"
         },
         {
