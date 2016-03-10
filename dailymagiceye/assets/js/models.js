@@ -3,7 +3,7 @@ import Backbone from 'backbone';
 import randomWord from 'random-word-by-length';
 
 import { MODE, NUM_OF_TEXTS, MAX_WORDS_LEN } from 'assets/js/settings';
-import { randomHex as rh } from 'assets/js/utils';
+import { randomHex as h } from 'assets/js/utils';
 
 // models
 export var Image = Backbone.Model.extend();
@@ -48,25 +48,25 @@ export var TextList = Backbone.Collection.extend({
      * unicode Katakana range
      * 30A0 ~ 30FF */
     if (Math.random() < 0.5) {
-      return unescape(`%u30${rh(4, 9)}${rh(0, 6)}`);
+      return unescape(`%u30${h(4, 9)}${h(0, 6)}`);
     } else {
-      return unescape(`%u30${rh('A', 'F')}${rh(0, 'F')}`);
+      return unescape(`%u30${h('A', 'F')}${h(0, 'F')}`);
     }
   },
   randomKanji: function() {
     /* unicode Kanji range
      * 4E00 ~ 9FC3 */
-    return unescape(`%u${rh(4, 9)}${rh('E', 'F')}${rh(0, 'C')}${rh(0, 3)}`);
+    return unescape(`%u${h(4, 9)}${h('E', 'F')}${h(0, 'C')}${h(0, 3)}`);
   },
   randomHangul: function() {
     /* unicode Hangul range
      * AC00 ~ AFFF */
-    return unescape(`%uA${rh('C', 'F')}${rh(0, 'F')}${rh(0, 'F')}`);
+    return unescape(`%uA${h('C', 'F')}${h(0, 'F')}${h(0, 'F')}`);
   },
   randomSymbol: function() {
     /* unicode Symbol range
      * 2600 ~ 269D */
-    return unescape(`%u26${rh(0, 9)}${rh(0, 'D')}`);
+    return unescape(`%u26${h(0, 9)}${h(0, 'D')}`);
   },
   snowMan: function() {
     /* unicode Snowman
