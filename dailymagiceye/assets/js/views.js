@@ -133,7 +133,7 @@ export var SideView = Marionette.CompositeView.extend({
   },
   showIntro: function(){
     var intro = introJs.introJs();
-    var link1 = "https://en.wikipedia.org/wiki/Autostereogramhttps://en.wikipedia.org/wiki/Autostereogram";
+    var link1 = "https://en.wikipedia.org/wiki/Autostereogram";
     var link2 = "http://www.colorstereo.com/texts_.txt/practice.htm";
     intro.setOption('showStepNumbers', false);
     intro.setOption('tooltipPosition', 'auto');
