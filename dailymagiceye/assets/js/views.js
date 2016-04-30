@@ -136,29 +136,32 @@ export var SideView = Marionette.CompositeView.extend({
     var link1 = "https://en.wikipedia.org/wiki/Autostereogram";
     var link2 = "http://www.colorstereo.com/texts_.txt/practice.htm";
     intro.setOption('showStepNumbers', false);
-    intro.setOption('tooltipPosition', 'auto');
-    intro.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);
     intro.setOptions({
       steps: [
         {
           element: '#title',
-          intro: `Welcome to Daily MagicEye! This is a random word <a href=${link1} target="_blank">autostereogram</a> app for visual recovery(I hope).`,
+          intro: `Welcome to Daily MagicEye! This is a random word <a href=${link1} target="_system">autostereogram</a> app for visual recovery(I hope).`,
+          position: 'bottom'
         },
         {
           element: '#magic-eye',
-          intro: `Here's the MagicEye image, one word is floating on it. <a href=${link2} target="_blank">Can you find it?</a>`,
+          intro: `Here's the MagicEye image, one word is floating on it. <a href=${link2} target="_system">Can you find it?</a>`,
+          position: 'top'
         },
         {
           element: '#textList',
           intro: "You can choose the floating word here.",
+          position: 'bottom'
         },
         {
           element: '#nav',
           intro: "You can also select type of words here.",
+          position: 'bottom'
         },
         {
           element: '#refresh',
           intro: "The words are generated randomly. Press this button to reload them.",
+          position: 'right'
         },
       ]
     });
