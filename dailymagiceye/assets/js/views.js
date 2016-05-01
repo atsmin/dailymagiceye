@@ -110,9 +110,9 @@ var TextView = Marionette.ItemView.extend({
     radio: 'input[name=textRadio]',
   },
   events: {
-    'change @ui.radio': 'changeRadio'
+    'change @ui.radio': 'changeText'
   },
-  changeRadio: function(){
+  changeText: function(){
     renderMagicEye(this.ui.radio.val());
   },
   templateHelpers: function(options) {
@@ -146,11 +146,11 @@ export var SideView = Marionette.CompositeView.extend({
     help: '#help',
   },
   events: {
-    'click @ui.button': 'refreshText',
+    'click @ui.button': 'refreshTexts',
     'click @ui.tab': 'clickTab',
     'click @ui.help': 'showIntro'
   },
-  refreshText: function(){
+  refreshTexts: function(){
     var mode = $('li.active').index();
     this.collection.refresh(mode);
     this.renderImage();
@@ -161,7 +161,7 @@ export var SideView = Marionette.CompositeView.extend({
     var index = $(event.target).parent('li').index();
     this.ui.tab.removeClass('active');
     $(this.ui.tab[index]).addClass('active');
-    this.refreshText();
+    this.refreshTexts();
   },
   showIntro: function(){
     var intro = introJs.introJs();
