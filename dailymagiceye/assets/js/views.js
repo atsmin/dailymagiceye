@@ -46,13 +46,13 @@ export var ImageView = Marionette.ItemView.extend({
     $(window).on('resize.imageview', this.onResize.bind(this));
     $(this.el).on('swiperight', this.onSwipeRight.bind(this));
     $(this.el).on('swipeleft', this.onSwipeLeft.bind(this));
-    $(this.el).on('tap', this.onTap.bind(this));
+    $(this.el).on('taphold', this.onTapHold.bind(this));
   },
   onDestroy: function() {
     $(window).off('resize.imageview');
     $(this.el).off('swiperight');
     $(this.el).off('swipeleft');
-    $(this.el).off('tap');
+    $(this.el).off('taphold');
   },
   onResize: function() {
     var imageWidth, imageHeight;
@@ -63,25 +63,25 @@ export var ImageView = Marionette.ItemView.extend({
     var $checked = $('input[name=textRadio]:checked');
     var $next = $checked.parents('div:first').next();
     if ($next.length) {
-      $next.children('label').children('input').prop('checked', true);
+      $next.children('label').children('input').prop('checked', true)
+        .trigger('click');
     } else {
-      $('input[name=textRadio]:first').prop('checked', true);
+      $('input[name=textRadio]:first').prop('checked', true)
+        .trigger('click');
     }
-    $checked = $('input[name=textRadio]:checked');
-    renderMagicEye($checked.val());
   },
   onSwipeLeft: function() {
     var $checked = $('input[name=textRadio]:checked');
     var $prev = $checked.parents('div:first').prev();
     if ($prev.length) {
-      $prev.children('label').children('input').prop('checked', true);
+      $prev.children('label').children('input').prop('checked', true)
+        .trigger('click');
     } else {
-      $('input[name=textRadio]:last').prop('checked', true);
+      $('input[name=textRadio]:last').prop('checked', true)
+        .trigger('click');
     }
-    $checked = $('input[name=textRadio]:checked');
-    renderMagicEye($checked.val());
   },
-  onTap: function() {
+  onTapHold: function() {
     $('#refresh').trigger('click');
   },
   modelEvents: {
