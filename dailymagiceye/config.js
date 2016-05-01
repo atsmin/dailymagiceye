@@ -18,12 +18,12 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "backbone": "npm:backbone@1.2.3",
     "backbone.marionette": "npm:backbone.marionette@2.4.4",
+    "jquery-touch-events": "github:benmajor/jQuery-Touch-Events@1.0.1",
     "caolan/async": "github:caolan/async@1.5.2",
     "core-js": "npm:core-js@1.2.6",
     "fgnass/spin.js": "github:fgnass/spin.js@2.3.2",
     "intro.js": "npm:intro.js@2.0.0",
     "jquery": "npm:jquery@2.2.3",
-    "jquery-mobile": "npm:jquery-mobile@1.4.1",
     "lodash": "npm:lodash@4.0.0",
     "magiceye": "github:peeinears/MagicEye.js@master",
     "random-word-by-length": "npm:random-word-by-length@0.1.0",
@@ -77,10 +77,6 @@ System.config({
     },
     "npm:intro.js@2.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"
-    },
-    "npm:jquery-mobile@1.4.1": {
-      "jquery": "npm:jquery@2.2.3",
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:lodash@4.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"

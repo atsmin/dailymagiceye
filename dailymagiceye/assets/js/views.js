@@ -4,7 +4,7 @@ import textMapper from 'magiceye/depthmappers/TextDepthMapper.js';
 import randomWord from 'random-word-by-length';
 import async from 'caolan/async';
 import introJs from 'intro.js';
-import jquerymobile from 'jquery-mobile';
+import jqueryTouchEvents from 'jquery-touch-events';
 
 import { getImageSize, SpinnerSingleton } from 'assets/js/utils';
 
@@ -46,7 +46,7 @@ export var ImageView = Marionette.ItemView.extend({
     $(window).on('resize.imageview', this.onResize.bind(this));
     $(this.el).on('swiperight', this.onSwipeRight.bind(this));
     $(this.el).on('swipeleft', this.onSwipeLeft.bind(this));
-    $(this.el).on('taphold', this.onTapHold.bind(this));
+    $(this.el).on('swipedown', this.onSwipeDown.bind(this));
   },
   onDestroy: function() {
     $(window).off('resize.imageview');
@@ -64,10 +64,10 @@ export var ImageView = Marionette.ItemView.extend({
     var $next = $checked.parents('div:first').next();
     if ($next.length) {
       $next.children('label').children('input').prop('checked', true)
-        .trigger('click');
+        .trigger('change');
     } else {
       $('input[name=textRadio]:first').prop('checked', true)
-        .trigger('click');
+        .trigger('change');
     }
   },
   onSwipeLeft: function() {
@@ -75,13 +75,13 @@ export var ImageView = Marionette.ItemView.extend({
     var $prev = $checked.parents('div:first').prev();
     if ($prev.length) {
       $prev.children('label').children('input').prop('checked', true)
-        .trigger('click');
+        .trigger('change');
     } else {
       $('input[name=textRadio]:last').prop('checked', true)
-        .trigger('click');
+        .trigger('change');
     }
   },
-  onTapHold: function() {
+  onSwipeDown: function() {
     $('#refresh').trigger('click');
   },
   modelEvents: {
@@ -110,9 +110,9 @@ var TextView = Marionette.ItemView.extend({
     radio: 'input[name=textRadio]',
   },
   events: {
-    'click @ui.radio': 'clickRadio'
+    'change @ui.radio': 'changeRadio'
   },
-  clickRadio: function(){
+  changeRadio: function(){
     renderMagicEye(this.ui.radio.val());
   },
   templateHelpers: function(options) {
