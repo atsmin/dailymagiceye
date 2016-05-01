@@ -3,7 +3,8 @@ import magiceye from 'magiceye';
 import textMapper from 'magiceye/depthmappers/TextDepthMapper.js';
 import randomWord from 'random-word-by-length';
 import async from 'caolan/async';
-import introJs from 'intro.js'
+import introJs from 'intro.js';
+import jquerymobile from 'jquery-mobile';
 
 import { getImageSize, SpinnerSingleton } from 'assets/js/utils';
 
@@ -43,14 +44,45 @@ export var ImageView = Marionette.ItemView.extend({
   template: '#image-template',
   initialize: function() {
     $(window).on('resize.imageview', this.onResize.bind(this));
+    $(this.el).on('swiperight', this.onSwipeRight.bind(this));
+    $(this.el).on('swipeleft', this.onSwipeLeft.bind(this));
+    $(this.el).on('tap', this.onTap.bind(this));
   },
   onDestroy: function() {
     $(window).off('resize.imageview');
+    $(this.el).off('swiperight');
+    $(this.el).off('swipeleft');
+    $(this.el).off('tap');
   },
   onResize: function() {
     var imageWidth, imageHeight;
     [imageWidth, imageHeight] = getImageSize();
     this.model.set({width: imageWidth, height: imageHeight});
+  },
+  onSwipeRight: function() {
+    var $checked = $('input[name=textRadio]:checked');
+    var $next = $checked.parents('div:first').next();
+    if ($next.length) {
+      $next.children('label').children('input').prop('checked', true);
+    } else {
+      $('input[name=textRadio]:first').prop('checked', true);
+    }
+    $checked = $('input[name=textRadio]:checked');
+    renderMagicEye($checked.val());
+  },
+  onSwipeLeft: function() {
+    var $checked = $('input[name=textRadio]:checked');
+    var $prev = $checked.parents('div:first').prev();
+    if ($prev.length) {
+      $prev.children('label').children('input').prop('checked', true);
+    } else {
+      $('input[name=textRadio]:last').prop('checked', true);
+    }
+    $checked = $('input[name=textRadio]:checked');
+    renderMagicEye($checked.val());
+  },
+  onTap: function() {
+    $('#refresh').trigger('click');
   },
   modelEvents: {
     'change': 'refresh'
@@ -133,6 +165,7 @@ export var SideView = Marionette.CompositeView.extend({
   },
   showIntro: function(){
     var intro = introJs.introJs();
+    // for cordova InAppBrowser
     var link1 = "window.open('https://en.wikipedia.org/wiki/Autostereogram','_system');";
     var link2 = "window.open('http://www.colorstereo.com/texts_.txt/practice.htm','_system');";
     intro.setOption('showStepNumbers', false);
@@ -150,7 +183,7 @@ export var SideView = Marionette.CompositeView.extend({
         },
         {
           element: '#textList',
-          intro: "You can choose the floating word here.",
+          intro: "You can choose the floating word here or swipe the image.",
           position: 'bottom'
         },
         {
@@ -160,7 +193,7 @@ export var SideView = Marionette.CompositeView.extend({
         },
         {
           element: '#refresh',
-          intro: "The words are generated randomly. Press this button to reload them.",
+          intro: "The words are generated randomly. Press this button to reload them or tap the image.",
           position: 'right'
         },
       ]
