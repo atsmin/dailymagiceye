@@ -46,13 +46,13 @@ export var ImageView = Marionette.ItemView.extend({
     $(window).on('resize.imageview', this.onResize.bind(this));
     $(this.el).on('swiperight', this.onSwipeRight.bind(this));
     $(this.el).on('swipeleft', this.onSwipeLeft.bind(this));
-    $(this.el).on('doubletap', this.onDoubletap.bind(this));
+    $(this.el).on('doubletap', this.onDoubleTap.bind(this));
   },
   onDestroy: function() {
     $(window).off('resize.imageview');
     $(this.el).off('swiperight');
     $(this.el).off('swipeleft');
-    $(this.el).off('taphold');
+    $(this.el).off('doubletap');
   },
   onResize: function() {
     var imageWidth, imageHeight;
@@ -81,7 +81,7 @@ export var ImageView = Marionette.ItemView.extend({
         .trigger('change');
     }
   },
-  onDoubletap: function() {
+  onDoubleTap: function() {
     $('#refresh').trigger('click');
   },
   modelEvents: {
