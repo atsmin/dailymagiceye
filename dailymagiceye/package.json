@@ -17,5 +17,21 @@
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
     }
-  }
+  },
+  "name": "dailymagiceye",
+  "version": "1.0.0",
+  "main": "config.js",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "nightmare": "^2.4.1",
+    "mocha-generators": "^1.2.0",
+    "vo": "^3.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "atsmin",
+  "license": "MIT",
+  "description": ""
 }
