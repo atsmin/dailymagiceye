@@ -13,11 +13,12 @@ var settings = {
 describe('Test Daily MagicEye', function() {
 
   var nightmare;
+  this.timeout(settings.timeout);
 
   beforeEach(function*() {
     nightmare = Nightmare({
-      // show: true,
-    });
+       // show: true,
+    }).goto(settings.url);
   });
 
   afterEach(function*() {
@@ -25,55 +26,71 @@ describe('Test Daily MagicEye', function() {
   });
 
   it('The title should be "Daily MagicEye"', function*() {
-    this.timeout(settings.timeout);
-    var title = yield nightmare
-      .goto(settings.url)
-      .title();
+    var title = yield nightmare.title();
     expect(title).to.equal('Daily MagicEye');
   });
 
-  it('The image should be exists', function*() {
-    this.timeout(settings.timeout);
-    var exists = yield nightmare
-      .goto(settings.url)
-      .exists('#image');
+  it('The magiceye image should exist', function*() {
+    var exists = yield nightmare.exists('#magic-eye');
     exists.should.be.true;
   });
 
-  it('The side menu should be exists', function*() {
-    this.timeout(settings.timeout);
-    var exists = yield nightmare
-      .goto(settings.url)
-      .exists('#side');
-    exists.should.be.true;
+  it('The side menu should contain five radio buttons', function*() {
+    var num_of_radios = yield nightmare
+      .evaluate(function () {
+        return document.querySelectorAll('[name=textRadio]').length;
+      });
+    expect(num_of_radios).to.equal(5);
   });
 
-  it('The refresh button should be clickable', function*() {
-    this.timeout(settings.timeout);
-    var checked = yield nightmare
-      .goto(settings.url)
+  it('The side menu should contain five nav tabs', function*() {
+    var num_of_tabs = yield nightmare
+      .evaluate(function () {
+        return document.querySelectorAll('.textTab').length;
+      });
+    expect(num_of_tabs).to.equal(5);
+  });
+
+  it('The refresh button should be clickable and change the words', function*() {
+    var before_click = yield nightmare
+      .evaluate(function () {
+        els = document.querySelectorAll('[name=textRadio]');
+        return Array.prototype.map.call(els, function (el) {
+            return el.value;
+        });
+      });
+    var after_click = yield nightmare
       .click('#refresh')
       .evaluate(function () {
-        return document.querySelector('input[type=radio]').checked;
+        els = document.querySelectorAll('[name=textRadio]');
+        return Array.prototype.map.call(els, function (el) {
+            return el.value;
+        });
       });
-    checked.should.be.true;
+    expect(before_click).to.not.deep.equal(after_click);
   });
 
-  it('The nav tab should be clickable', function*() {
-    this.timeout(settings.timeout);
-    var checked = yield nightmare
-      .goto(settings.url)
-      .click('.textTab')
+  it('The nav tabs should be clickable and change the words', function*() {
+    var before_click = yield nightmare
       .evaluate(function () {
-        return document.querySelector('input[type=radio]').checked;
+        els = document.querySelectorAll('[name=textRadio]');
+        return Array.prototype.map.call(els, function (el) {
+            return el.value;
+        });
       });
-    checked.should.be.true;
+    var after_click = yield nightmare
+      .click('.textTab:nth-child(1) a')
+      .evaluate(function () {
+        els = document.querySelectorAll('[name=textRadio]');
+        return Array.prototype.map.call(els, function (el) {
+            return el.value;
+        });
+      });
+    expect(before_click).to.not.deep.equal(after_click);
   });
 
   it('The help link should open intro', function*() {
-    this.timeout(settings.timeout);
     var exists = yield nightmare
-      .goto(settings.url)
       .click('#help')
       .wait(1000)
       .exists('.introjs-tooltip');
