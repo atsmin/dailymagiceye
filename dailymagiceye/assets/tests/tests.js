@@ -7,7 +7,7 @@ var should = chai.should();
 
 var settings = {
   url: 'http://ats-min.com/dailymagiceye',
-  timeout: 100000
+  timeout: 600000
 };
 
 describe('Test Daily MagicEye', function() {
