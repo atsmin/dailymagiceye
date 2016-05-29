@@ -4,3 +4,4 @@ node_js:
 before_script:
   - cd dailymagiceye
   - npm install -g mocha
+  - npm install
