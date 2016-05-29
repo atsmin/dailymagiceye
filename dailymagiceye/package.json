@@ -28,7 +28,7 @@
     "mocha-generators": "^1.2.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha ./assets/tests/*.js"
   },
   "author": "atsmin",
   "license": "MIT",
