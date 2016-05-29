@@ -21,14 +21,14 @@
   "name": "dailymagiceye",
   "version": "1.0.0",
   "main": "config.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "chai": "^3.5.0",
     "nightmare": "^2.4.1",
-    "mocha-generators": "^1.2.0",
+    "mocha-generators": "^1.2.0"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "atsmin",
   "license": "MIT",
