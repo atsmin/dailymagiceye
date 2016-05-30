@@ -2,7 +2,7 @@
 
 Random text magiceye page for daily visual recorvery
 
- http://ats-min.com/dailymagiceye
+ http://magiceye.ats-min.com
 
 Thanks [MagicEye.js](http://peeinears.github.io/MagicEye.js/)
 
