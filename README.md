@@ -4,6 +4,8 @@
 
 Random text magiceye page for daily visual recorvery
 
+<img src="https://raw.githubusercontent.com/atsmin/dailymagiceye/master/dailymagiceye/assets/images/capture.gif">
+
  http://magiceye.ats-min.com
 
 Thanks [MagicEye.js](http://peeinears.github.io/MagicEye.js/)
