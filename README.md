@@ -1,5 +1,7 @@
 # Daily MagicEye
 
+[![build status](https://travis-ci.org/atsmin/dailymagiceye.svg?branch=master)](https://travis-ci.org/atsmin/dailymagiceye)
+
 Random text magiceye page for daily visual recorvery
 
  http://magiceye.ats-min.com
