@@ -2,11 +2,11 @@
 
 [![build status](https://travis-ci.org/atsmin/dailymagiceye.svg?branch=master)](https://travis-ci.org/atsmin/dailymagiceye)
 
-Random text magiceye page for daily visual recorvery
+Random text magiceye web service for daily visual recorvery
 
-<img src="https://raw.githubusercontent.com/atsmin/dailymagiceye/master/dailymagiceye/assets/images/capture.gif">
+http://magiceye.ats-min.com
 
- http://magiceye.ats-min.com
+![capture](https://raw.githubusercontent.com/atsmin/dailymagiceye/master/dailymagiceye/assets/images/capture.gif)
 
 Thanks [MagicEye.js](http://peeinears.github.io/MagicEye.js/)
 
